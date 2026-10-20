@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guía del Mentee RIMAC | Tercera Edición</title>
+<style>
+:root{--r:#ff173d;--m:#ed0c78;--o:#ff5a00;--y:#ffb000;--p:#8e08e8;--ink:#1f1a24;--mut:#6b6270;--line:#ece2e6;--soft:#fff5f7;--bg:#faf8f9}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:"BR Sonoma","Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+h1,h2,h3{font-family:"RIMAC Display","BR Sonoma","Segoe UI",Arial,sans-serif}
+a{color:var(--r);font-weight:700}
+.progress{position:fixed;top:0;left:0;height:4px;background:var(--r);width:0;z-index:30}
+.hero{position:relative;overflow:hidden;background:#fff;padding:80px 8vw 70px;border-bottom:1px solid var(--line)}
+.hero>*{position:relative;z-index:1}
+.logo{font-weight:900;font-size:15px}.logo b{color:var(--r)}
+.tag{display:inline-block;margin-top:34px;padding:8px 14px;border-radius:999px;background:var(--soft);color:var(--r);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(44px,7vw,86px);line-height:.95;letter-spacing:-.045em;margin:20px 0;max-width:820px}
+.grad{color:var(--r)}
+.hero p{font-size:19px;color:#5b5160;max-width:680px}
+.quick{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.quick a{text-decoration:none;padding:14px 20px;border-radius:14px;background:var(--ink);color:#fff;font-size:14px}
+.quick a.alt{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.topnav{position:sticky;top:0;z-index:25;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.topnav .in{max-width:1180px;margin:auto;padding:0 5vw;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.topnav a{white-space:nowrap;text-decoration:none;color:var(--mut);font-size:13px;padding:14px 12px;border-bottom:3px solid transparent}
+.topnav a:hover,.topnav a.act{color:var(--r);border-bottom-color:var(--r)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 5vw}
+section{padding:72px 0;border-bottom:1px solid var(--line);scroll-margin-top:50px}
+section.white{background:#fff}
+.eye{font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--r)}
+h2{font-size:clamp(30px,4vw,50px);line-height:1.05;letter-spacing:-.035em;margin:10px 0 14px;max-width:900px}
+.lead{font-size:18px;color:var(--mut);max-width:840px;margin:0 0 32px}
+.grid{display:grid;gap:18px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g5{grid-template-columns:repeat(5,1fr)}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px}
+.card h3{margin:0 0 8px;font-size:19px}.card p,.card li{color:#5f5563;font-size:15px}.card ul{padding-left:18px;margin:8px 0 0}
+.ico{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:#fff;font-weight:900;margin-bottom:14px;font-size:18px}
+.bg-r{background:var(--r)}.bg-o{background:var(--o)}.bg-m{background:var(--m)}.bg-p{background:var(--p)}.bg-y{background:var(--y)}
+.quote{margin:30px 0 0;padding:26px 30px;border-radius:20px;background:#fff0f3;border-left:6px solid var(--r);font-size:22px;font-weight:800;line-height:1.3}
+.note{margin-top:22px;padding:18px 22px;border-radius:16px;background:var(--ink);color:#fff;font-size:15px}.note b{color:#ffb4c3}
+.back{display:inline-block;margin-top:28px;font-size:13px;text-decoration:none}
+/* INDEX */
+.idx{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.idx a{text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;transition:.2s;display:block}
+.idx a:hover{transform:translateY(-3px);border-color:var(--r);box-shadow:0 12px 26px rgba(255,23,61,.12)}
+.idx .n{font-family:"RIMAC Display",Arial;font-weight:900;font-size:26px;color:var(--r)}
+.idx b{display:block;margin:4px 0}.idx span{font-size:13px;color:var(--mut);font-weight:400}
+.do ul,.dont ul{list-style:none;padding:0}.do li,.dont li{padding:9px 0;border-bottom:1px dashed var(--line)}
+.do li:before{content:"✓";color:var(--r);font-weight:900;margin-right:10px}.dont li:before{content:"✕";color:var(--p);font-weight:900;margin-right:10px}
+.ser{border-radius:20px;padding:26px;color:#fff;min-height:160px}.ser h3{font-size:26px;margin:0 0 6px}
+.s1{background:var(--o)}.s2{background:var(--r)}.s3{background:var(--m)}
+.part{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px}
+.part .n{flex:0 0 46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#fff;font-weight:900}
+.part h3{margin:0 0 4px;font-size:18px}.part p{margin:0;color:var(--mut);font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.chip{font-size:12px;padding:6px 10px;border-radius:999px;background:var(--soft);color:#a3002c;font-weight:700}
+.check{list-style:none;padding:0;margin:0}.check li{padding:12px 0 12px 36px;border-bottom:1px solid var(--line);position:relative}
+.check li:before{content:"☐";position:absolute;left:0;top:9px;font-size:20px;color:var(--r)}
+.steps{counter-reset:s;display:grid;gap:12px}
+.step{counter-increment:s;display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.step:before{content:counter(s,decimal-leading-zero);font-family:"RIMAC Display",Arial;font-weight:900;font-size:22px;color:var(--r);min-width:40px}
+.step b{display:block;margin-bottom:2px}.step span{color:var(--mut);font-size:14px}
+.terr{border-radius:22px;padding:24px;color:#fff;display:flex;flex-direction:column;min-height:300px}
+.terr small{font-weight:900;opacity:.85}.terr h3{font-size:22px;line-height:1.1;margin:10px 0 8px}
+.terr .q{font-weight:800;font-size:15px;margin-bottom:12px}.terr p{font-size:13px;margin:0 0 8px}
+.terr .tl{margin-top:auto;font-size:12px;background:rgba(255,255,255,.18);border-radius:12px;padding:10px}
+.t1{background:var(--r)}.t2{background:var(--o)}.t3{background:var(--p)}.t4{background:var(--y)}.t5{background:var(--m)}
+.timeline{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.block{border-radius:20px;padding:24px;background:#fff;border:1px solid var(--line)}
+.block .min{display:inline-block;padding:6px 12px;border-radius:999px;color:#fff;font-weight:800;font-size:12px;margin-bottom:12px}
+.block h3{margin:0 0 10px}.block li{font-size:14px;color:#5f5563;margin:6px 0}
+/* BITACORA */
+.sheets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:0}
+.sheets button{border:1px solid var(--line);border-bottom:0;background:#f3eef1;border-radius:14px 14px 0 0;padding:12px 18px;font-weight:800;cursor:pointer;font-family:inherit;color:var(--mut);font-size:14px}
+.sheets button.on{background:#fff;color:var(--r)}
+.sheetbox{background:#fff;border:1px solid var(--line);border-radius:0 20px 20px 20px;padding:28px}
+.spane{display:none}.spane.on{display:block}
+.xl{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0 6px;overflow:hidden;border-radius:12px}
+.xl th{background:var(--r);color:#fff;padding:10px;text-align:left;font-size:12px}
+.xl td{border:1px solid var(--line);padding:9px 10px;color:#4f4553;vertical-align:top}
+.xl tr:nth-child(even) td{background:#fdf8fa}
+.tblwrap{overflow-x:auto}
+.fieldmap{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.fm{border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--bg)}
+.fm b{display:block;color:var(--r);font-size:14px;margin-bottom:3px}.fm span{font-size:13px;color:#5f5563}
+.status{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.status span{font-size:12px;font-weight:800;padding:6px 12px;border-radius:999px}
+.pdisec{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
+.pdisec .fm .tagw{display:inline-block;font-size:11px;font-weight:900;padding:3px 8px;border-radius:999px;margin-bottom:6px;color:#fff}
+/* TOOLS */
+.tool{background:#fff;border:1px solid var(--line);border-radius:24px;margin-bottom:26px;overflow:hidden}
+.tool-head{display:flex;gap:18px;align-items:center;padding:26px 28px;background:#fff2f5}
+.tool-head .ico{margin:0;width:56px;height:56px;font-size:22px}
+.tool-head h3{margin:0;font-size:26px}.tool-head p{margin:2px 0 0;color:var(--mut)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.meta span{font-size:12px;padding:5px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700}
+.tabs{display:flex;gap:6px;padding:0 28px;border-bottom:1px solid var(--line)}
+.tabs button{border:0;background:none;padding:14px 16px;font-weight:800;color:var(--mut);cursor:pointer;border-bottom:3px solid transparent;font-family:inherit;font-size:14px}
+.tabs button.on{color:var(--r);border-bottom-color:var(--r)}
+.pane{display:none;padding:26px 28px}.pane.on{display:block}
+.pane h4{margin:18px 0 8px;font-size:15px;color:var(--r);text-transform:uppercase;letter-spacing:.06em}.pane h4:first-child{margin-top:0}
+.pane ol,.pane ul{margin:0;padding-left:20px}.pane li{margin:7px 0;color:#4f4553;font-size:15px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.example{background:var(--soft);border-radius:16px;padding:18px 20px;font-size:14px;color:#4f4553}.example b{color:var(--r)}
+.reg{margin-top:16px;padding:14px 16px;border-radius:12px;background:#f4eefe;color:#4b2c78;font-size:14px}.reg b{color:var(--p)}
+.grow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0 14px}
+.grow div{border-radius:14px;padding:14px;color:#fff;font-size:13px}.grow b{display:block;font-size:26px}
+.eis{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:460px}.eis div{border-radius:14px;padding:14px;font-size:13px;min-height:90px}.eis b{display:block}
+.mirror{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mirror div{border-radius:14px;padding:16px;font-size:13px}.mirror b{display:block;margin-bottom:4px}
+.extra{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.extra span{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:14px}
+/* RESOURCES */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.filters button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 15px;font-weight:800;cursor:pointer;font-family:inherit;font-size:13px;color:var(--mut)}
+.filters button.on{background:var(--r);color:#fff;border-color:var(--r)}
+.res{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column}
+.res .type{font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+.res h3{margin:8px 0;font-size:17px}.res p{font-size:14px;color:var(--mut);margin:0 0 8px}
+.res .ask{font-size:13px;background:var(--bg);border-radius:10px;padding:10px;margin:6px 0 14px;color:#4f4553}
+.res a.btn{margin-top:auto;text-decoration:none;text-align:center;padding:11px;border-radius:12px;background:var(--ink);color:#fff;font-size:13px}
+.type.book{color:var(--r)}.type.video{color:var(--p)}.type.course{color:var(--o)}.type.rimac{color:var(--m)}
+details{background:#fff;border:1px solid var(--line);border-radius:16px;margin:10px 0}
+summary{padding:18px 22px;font-weight:800;cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+summary:after{content:"+";color:var(--r);font-size:22px;line-height:1}details[open] summary:after{content:"–"}
+details .in{padding:0 22px 20px;color:#4f4553;font-size:15px}.in b{color:var(--r)}
+.closing{background:var(--r);color:#fff;border:0}
+.closing .eye{color:#fff;opacity:.85}.closing .lead{color:#ffe6ec}
+.closing .card{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff}.closing .card p{color:#fff}
+.closing .quote{background:rgba(255,255,255,.14);border-left-color:#fff;color:#fff}.closing .back{color:#fff}
+footer{padding:30px;text-align:center;font-size:12px;color:var(--mut)}
+.print{position:fixed;right:22px;bottom:22px;border:0;border-radius:999px;background:var(--r);color:#fff;padding:13px 18px;font-weight:800;cursor:pointer;box-shadow:0 10px 26px rgba(255,23,61,.35);z-index:30;font-family:inherit}
+@media(max-width:1000px){.g4,.g5,.idx{grid-template-columns:repeat(2,1fr)}.two,.timeline,.fieldmap,.pdisec{grid-template-columns:1fr}}
+@media(max-width:680px){.g2,.g3,.g4,.g5,.idx,.grow,.mirror{grid-template-columns:1fr}.hero:before,.hero:after{display:none}.tabs{overflow-x:auto}.print{display:none}}
+@media print{.print,.progress,.topnav,.filters,.tabs,.sheets,.back{display:none}.pane,.spane{display:block!important}section{break-inside:avoid;padding:36px 0}.hero:before,.hero:after{display:none}}
+.logo-img{height:70px;display:block}
+.tool-head{cursor:pointer;user-select:none}.tool-head:hover{background:#ffe8ee}
+.tool-head .txt{flex:1}.tool-head .ico{flex:0 0 56px}
+.chev{flex:0 0 40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid var(--line);color:var(--r);font-weight:900;font-size:18px;transition:transform .25s}
+.tool.open .chev{transform:rotate(180deg);background:var(--r);color:#fff;border-color:var(--r)}
+.tool{margin-bottom:16px}.tool-body{display:none;border-top:1px solid var(--line)}.tool.open .tool-body{display:block}
+@media print{.tool-body{display:block!important}.chev{display:none}}
+.cta{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px;padding:20px 24px;border-radius:18px;text-decoration:none;color:#fff;font-weight:600;font-size:16px;background:var(--r);box-shadow:0 12px 26px rgba(255,23,61,.22);transition:transform .2s}
+.cta:hover{transform:translateY(-2px)}.cta b{text-decoration:underline}.cta .arr{flex:0 0 40px;height:40px;border-radius:50%;background:#fff;color:var(--r);display:grid;place-items:center;font-size:20px;font-weight:900}
+.hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,1fr);gap:56px;align-items:center}
+.hero-txt{min-width:0}
+.hero-art{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:150px 150px;gap:14px;max-width:470px;justify-self:end;width:100%}
+.ha{border-radius:26px;padding:22px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;font-family:"RIMAC Display","BR Sonoma","Segoe UI",Arial,sans-serif}
+.ha-main{grid-column:1/3;grid-row:1/3;background:var(--r)}
+.ha-main b{font-size:96px;line-height:.85;letter-spacing:-.05em}.ha-main span{font-size:22px;font-weight:800;margin-top:8px}
+.ha-a{background:var(--o);font-size:15px;font-weight:800;line-height:1.15}
+.ha-b{background:var(--ink);font-size:13px;font-weight:700;line-height:1.25}
+.hero-bar{position:absolute;left:0;right:0;bottom:0;height:8px;display:grid;grid-template-columns:3fr 1fr 1fr 1fr}
+.hero-bar i:nth-child(1){background:var(--r)}.hero-bar i:nth-child(2){background:var(--o)}.hero-bar i:nth-child(3){background:var(--m)}.hero-bar i:nth-child(4){background:var(--y)}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-art{justify-self:start;grid-template-rows:110px 110px;max-width:360px}.ha-main b{font-size:66px}}
+@media print{.hero-art,.hero-bar{display:none}}
+</style>
+</head>
+<body>
+<div class="progress" id="bar"></div>
+
+<header class="hero" id="inicio">
+<div class="hero-txt">
+  <img class="logo-img" src="data:image/png;base64,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" alt="Mentoring RIMAC">
+  <span class="tag">Programa de Mentoring · Tercera Edición</span>
+  <h1>Guía del <span class="grad">Mentee</span></h1>
+  <p>Este es tu momento para aprender, explorar y retarte. Tu mentor te acompaña, pero tú eres el owner de tu desarrollo. Esta guía te ayuda a sacarle el máximo provecho a cada conversación.</p>
+</div>
+<div class="hero-art" aria-hidden="true"><div class="ha ha-main"><b>3ª</b><span>Edición</span></div><div class="ha ha-a">Guía del Mentee</div><div class="ha ha-b">Desarrollo del Talento</div></div><div class="hero-bar"><i></i><i></i><i></i><i></i></div>
+</header>
+
+
+<!-- INDICE -->
+<section class="white" id="indice"><div class="wrap">
+  <div class="eye">Índice</div>
+  <h2>¿Qué encontrarás en esta guía?</h2>
+  <p class="lead">Haz clic en cualquier sección para ir directo. Desde cada sección puedes volver aquí.</p>
+  <div class="idx">
+    <a href="#rol"><div class="n">01</div><b>Tu rol como mentee</b><span>Eres owner de tu desarrollo</span></a>
+    <a href="#ser"><div class="n">02</div><b>SER en tu mentoría</b><span>Nuestra cultura en la relación</span></a>
+    <a href="#pdi"><div class="n">03</div><b>Tu PDI es tu brújula</b><span>Acciones 70-20-10 y EVD</span></a>
+    <a href="#territorios"><div class="n">04</div><b>Los cinco territorios</b><span>¿Qué conversación necesito hoy?</span></a>
+    <a href="#bitacora"><div class="n">05</div><b>Cómo usar tu bitácora</b><span>Hoja por hoja</span></a>
+    <a href="#desafios"><div class="n">06</div><b>Los cuatro desafíos</b><span>Y cómo superarlos</span></a>
+    <a href="#herramientas"><div class="n">07</div><b>Tus herramientas</b><span>Seis herramientas paso a paso</span></a>
+    <a href="#casos"><div class="n">08</div><b>Situaciones difíciles</b><span>Qué hacer si algo no fluye</span></a>
+    <a href="#recursos"><div class="n">09</div><b>Biblioteca</b><span>Libros, charlas y cursos</span></a>
+  </div>
+</div></section>
+
+<!-- 01 ROL -->
+<section id="rol"><div class="wrap">
+  <div class="eye">01 · Tu rol</div>
+  <h2>El owner de tu desarrollo eres tú</h2>
+  <p class="lead">Tu mentor acompaña y comparte su experiencia, pero tú lideras el proceso. Mientras más claridad, apertura y seguimiento pongas, más valor obtendrás de la relación.</p>
+  <div class="grid g2">
+    <div class="card do"><h3>Como mentee, sí…</h3><ul>
+      <li>Llegas preparado, con un tema y una pregunta real.</li>
+      <li>Compartes tu PDI y lo mantienes actualizado.</li>
+      <li>Propones fechas y cuidas la frecuencia de las sesiones.</li>
+      <li>Te abres, cuentas lo que te cuesta y pides feedback.</li>
+      <li>Conviertes cada conversación en una acción concreta.</li>
+      <li>Registras tus sesiones y avances en la bitácora.</li></ul></div>
+    <div class="card dont"><h3>Como mentee, no…</h3><ul>
+      <li>Esperas que tu mentor defina la agenda por ti.</li>
+      <li>Buscas que te resuelvan el reto o te digan exactamente qué hacer.</li>
+      <li>Ves la mentoría como un camino para conseguir una promoción.</li>
+      <li>Llegas a la sesión sin haber revisado tus acuerdos.</li>
+      <li>Cancelas o postergas sin reprogramar.</li>
+      <li>Te quedas solo en la conversación sin pasar a la acción.</li></ul></div>
+  </div>
+  <div class="quote">La mentoría no reemplaza tu iniciativa: la potencia.</div>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+<!-- 02 SER -->
+<section class="white" id="ser"><div class="wrap">
+  <div class="eye">02 · Nuestra cultura</div>
+  <h2>SER también se vive siendo mentee</h2>
+  <div class="grid g3">
+    <div class="ser s1"><h3>Servimos</h3><p>Valoras el tiempo de tu mentor: llegas puntual, preparado y con disposición a aprender.</p></div>
+    <div class="ser s2"><h3>Empoderamos</h3><p>Tomas tus propias decisiones y asumes el protagonismo de tu desarrollo.</p></div>
+    <div class="ser s3"><h3>Resolvemos</h3><p>Llevas lo conversado a la práctica y compartes qué funcionó y qué ajustarás.</p></div>
+  </div>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+<!-- 03 PDI -->
+<section id="pdi"><div class="wrap">
+  <div class="eye">03 · Tu PDI</div>
+  <h2>Tu PDI es la brújula de tu mentoría</h2>
+  <p class="lead">No necesitas crear un plan nuevo. Tu Plan de Desarrollo Individual en Rankmi es el eje del programa y la base de las conversaciones con tu mentor.</p>
+  <div class="grid g2">
+    <div class="part"><div class="n bg-r">1</div><div><h3>Preguntas de reflexión</h3><p>¿Qué te motiva profesionalmente hoy? ¿Qué te gustaría lograr en tu carrera en los próximos años? ¿En qué proyectos o áreas te gustaría crecer en RIMAC?</p></div></div>
+    <div class="part"><div class="n bg-m">2</div><div><h3>Acciones con la metodología 70-20-10</h3><p>Por cada capacidad o competencia que elijas (te recomendamos de 2 a 4), registra acciones concretas:</p>
+      <div class="chips"><span class="chip">70% · Experiencia: proyectos y retos</span><span class="chip">20% · Aprender con otros: feedback, pares y mentoring</span><span class="chip">10% · Formación: Learning School, Tracks, Plus y Udemy</span></div></div></div>
+  </div>
+  <div class="note"><b>¿Dónde está tu mentoría?</b> Forma parte del 20% de tu PDI. Además, tu mentor te ayudará a reflexionar sobre tus experiencias del 70% y a elegir formación del 10% que realmente te sume.</div>
+
+  <h3 style="margin-top:44px">Checklist antes de tu primera sesión</h3>
+  <div class="grid">
+    <div class="card"><ul class="check">
+      <li>Completé las preguntas de reflexión de mi PDI en Rankmi.</li>
+      <li>Elegí las capacidades o competencias que quiero desarrollar.</li>
+      <li>Registré acciones 70-20-10 para cada una.</li>
+      <li>Revisé la sección comparativa de mi EVD.</li></ul></div>
+  </div>
+  <div class="note"><b>Si eres asesor de nuestra FFVV:</b> puedes completar tu PDI directamente en la segunda pestaña de tu bitácora (“PDI 70-20-10”).</div>
+
+  <a class="cta" href="https://rimacsegurosperu.sharepoint.com/:b:/s/TalentoDesarrollo/IQC4YTHq1UdyRolUtTfONkmSAdlaJvaTl-REnPTUFxwDuQg?e=x0YfFo" target="_blank"><span>Si quieres reforzar nuestro modelo de competencias, <b>ingresa aquí</b></span><span class="arr">→</span></a>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+<!-- 04 TERRITORIOS -->
+<section class="white" id="territorios"><div class="wrap">
+  <div class="eye">04 · La brújula de tus sesiones</div>
+  <h2>¿Qué conversación necesito hoy?</h2>
+  <p class="lead">Antes de cada sesión, elige el territorio que mejor describe lo que necesitas. No van en orden: tú decides por dónde empezar. También lo registrarás en tu bitácora.</p>
+  <div class="grid g5">
+    <div class="terr t1"><small>01</small><h3>PDI + propósito</h3><div class="q">¿Qué queremos transformar?</div><p>Elígelo si…</p><p>“Tengo muchos temas y no sé por cuál empezar.”</p><div class="tl"><b>Tráete:</b> tu PDI abierto.</div></div>
+    <div class="terr t2"><small>02</small><h3>Autoconocimiento</h3><div class="q">¿Qué necesitamos reconocer?</div><p>Elígelo si…</p><p>“Me pasa lo mismo una y otra vez.”</p><div class="tl"><b>Tráete:</b> tu EVD y feedback reciente.</div></div>
+    <div class="terr t3"><small>03</small><h3>Retos + perspectivas</h3><div class="q">¿Qué miramos desde otro lugar?</div><p>Elígelo si…</p><p>“Estoy bloqueado y veo una sola salida.”</p><div class="tl"><b>Tráete:</b> la situación descrita en hechos.</div></div>
+    <div class="terr t4"><small>04</small><h3>Acción + proyección</h3><div class="q">¿Qué haremos diferente?</div><p>Elígelo si…</p><p>“Sé lo que quiero, pero no avanzo.”</p><div class="tl"><b>Tráete:</b> tus acciones 70-20-10.</div></div>
+    <div class="terr t5"><small>05</small><h3>Liderazgo + influencia</h3><div class="q">¿Qué impacto queremos generar?</div><p>Elígelo si…</p><p>“Necesito sumar a otras personas.”</p><div class="tl"><b>Tráete:</b> a quiénes necesitas movilizar.</div></div>
+  </div>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+
+
+<!-- 07 BITACORA -->
+<section id="bitacora"><div class="wrap">
+  <div class="eye">05 · Tu bitácora</div>
+  <h2>Cómo usar tu bitácora, hoja por hoja</h2>
+  <p class="lead">La bitácora es el recurso que te permitirá dar seguimiento a tus acuerdos, visualizar tus avances y retomar cada sesión desde donde la dejaron, sin empezar de cero. Tiene cuatro hojas.</p>
+  <div class="sheets" id="sheets">
+    <button class="on">Bitácora</button><button>PDI 70-20-10</button><button>5 Terrenos</button><button>Fotos</button>
+  </div>
+  <div class="sheetbox">
+    <!-- HOJA 1 -->
+    <div class="spane on">
+      <h3 style="margin-top:0">Hoja 1 · Bitácora de sesiones</h3>
+      <p style="color:var(--mut)">Aquí registras cada encuentro. Complétala al terminar cada sesión y vuelve a ella cada vez que necesites refrescar algún punto.</p>
+      <div class="steps">
+        <div class="step"><div><b>Llena una fila por sesión</b><span>Recuerda que el programa contempla como mínimo 5 sesiones.</span></div></div>
+        <div class="step"><div><b>Elige el terreno de juego en la lista desplegable</b><span>Así podrás ver en qué territorios se enfocó tu mentoría. Si ninguno de los terrenos se ajusta a lo que conversaron, pueden proponer uno nuevo.</span></div></div>
+        <div class="step"><div><b>Actualiza el estatus al inicio de la siguiente sesión</b><span>Revisen juntos si los compromisos se cumplieron.</span></div></div>
+      </div>
+    </div>
+    <!-- HOJA 2 -->
+    <div class="spane">
+      <h3 style="margin-top:0">Hoja 2 · PDI 70-20-10</h3>
+      <p style="color:var(--mut)">Esta hoja te ayuda a llevar tu PDI a la mentoría y darle seguimiento. Si ya registraste tu PDI en Rankmi, puedes seguir trabajando con normalidad desde ahí; pero si quieres profundizar en tu PDI, completa esta hoja. <b>Complétala hasta el punto 3 antes de tu primera sesión.</b></p>
+      <div class="pdisec">
+        <div class="fm"><span class="tagw bg-r">Antes de la sesión 1</span><b>1 · Preguntas de reflexión</b><span>Copia o resume lo que respondiste en tu PDI: qué te motiva, qué quieres lograr y dónde te gustaría crecer.</span></div>
+        <div class="fm"><span class="tagw bg-r">Antes de la sesión 1</span><b>2 · Del deseo a la acción</b><span>Qué situación concreta quieres transformar, por qué importa ahora, qué patrón o creencia influye y qué impacto quieres generar.</span></div>
+        <div class="fm"><span class="tagw bg-r">Antes de la sesión 1</span><b>3 · Competencia a desarrollar</b><span>Elige la competencia de la lista, tu nivel actual y objetivo, la conducta observable esperada y cómo medirás tu avance.</span></div>
+        <div class="fm"><span class="tagw bg-o">Sesión 2</span><b>4 · Plan de acción 70-20-10</b><span>Tus acciones con enfoque, resultado esperado, apoyo, fechas, indicador de éxito y estatus. Revísalas con tu mentor.</span></div>
+        <div class="fm"><span class="tagw bg-m">Sesiones 3 a 5</span><b>5 · Seguimiento y aprendizaje</b><span>Qué avance reconoces, qué funcionó, qué ajustarás y cuál es tu siguiente acción de alto impacto.</span></div>
+        <div class="fm"><span class="tagw bg-p">Sesión 6</span><b>6 · Cierre</b><span>¿Qué cambio sostendrás y qué impacto quieres multiplicar?</span></div>
+      </div>
+      <div class="note"><b>Recuerda:</b> si tu PDI está en Rankmi, actualiza también ahí tus avances.</div>
+    </div>
+    <!-- HOJA 3 -->
+    <div class="spane">
+      <h3 style="margin-top:0">Hoja 3 · Los 5 terrenos de juego</h3>
+      <p style="color:var(--mut)">Es tu hoja de consulta rápida. Revísala antes de cada sesión para elegir el territorio y luego selecciónalo en la hoja Bitácora.</p>
+      <div class="tblwrap"><table class="xl">
+        <tr><th>Terreno</th><th>Pregunta</th><th>Úsalo cuando…</th></tr>
+        <tr><td>1 · PDI + propósito</td><td>¿Qué queremos transformar?</td><td>Necesitas foco o conectar tu desarrollo con lo que te motiva.</td></tr>
+        <tr><td>2 · Autoconocimiento</td><td>¿Qué necesitamos reconocer?</td><td>Quieres entender tus fortalezas, patrones o puntos ciegos.</td></tr>
+        <tr><td>3 · Retos + perspectivas</td><td>¿Qué miramos desde otro lugar?</td><td>Estás bloqueado o necesitas otra mirada.</td></tr>
+        <tr><td>4 · Acción + proyección</td><td>¿Qué haremos diferente?</td><td>Tienes claridad, pero necesitas avanzar.</td></tr>
+        <tr><td>5 · Liderazgo + influencia</td><td>¿Qué impacto queremos generar?</td><td>Necesitas movilizar o influir en otras personas.</td></tr>
+      </table></div>
+    </div>
+    <!-- HOJA 4 -->
+    <div class="spane">
+      <h3 style="margin-top:0">Hoja 4 · Memoria visual</h3>
+      <p style="color:var(--mut)">Tu espacio para guardar los recuerdos de tu experiencia. Es opcional, pero nos encantará verlos en el cierre.</p>
+      <div class="steps">
+        <div class="step"><div><b>Tómense una foto en la sesión</b><span>Puede ser una captura si la sesión es virtual.</span></div></div>
+        <div class="step"><div><b>Selecciona el recuadro de la sesión</b><span>Hay un espacio para cada una de las 6 sesiones.</span></div></div>
+        <div class="step"><div><b>Ve a Insertar → Imágenes</b><span>Elige “Colocar en celda” o “Colocar sobre las celdas”.</span></div></div>
+        <div class="step"><div><b>Escribe la fecha debajo de la foto</b><span>Así tendrás tu historia completa al final del programa.</span></div></div>
+      </div>
+    </div>
+  </div>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+<!-- 08 DESAFIOS -->
+<section class="white" id="desafios"><div class="wrap">
+  <div class="eye">06 · Los cuatro desafíos del mentee</div>
+  <h2>Lo que suele pasar y cómo resolverlo</h2>
+  <div class="grid g2">
+    <div class="card"><div class="ico bg-r">1</div><h3>Atreverse a abrirse y ser vulnerable</h3><p>Sin apertura real, la conversación se queda en lo superficial.</p><ul><li>Revisa tus competencias y el último feedback que recibiste.</li><li>Identifica qué te está costando hoy, no solo “a futuro”.</li><li>Lleva una pregunta real, no una pregunta para encajar.</li></ul></div>
+    <div class="card"><div class="ico bg-o">2</div><h3>Saber pedir la ayuda adecuada</h3><p>Sin claridad sobre qué quieres trabajar, la mentoría pierde foco.</p><ul><li>Completa tu PDI y define las capacidades que quieres desarrollar.</li><li>Elige el territorio antes de la sesión.</li><li>Convierte una inquietud amplia en una pregunta concreta.</li></ul></div>
+    <div class="card"><div class="ico bg-m">3</div><h3>Sostener el compromiso en el tiempo</h3><p>Sin frecuencia acordada, las sesiones compiten con otras prioridades.</p><ul><li>Definan una frecuencia desde la primera sesión.</li><li>Dejen la siguiente reunión agendada antes de despedirse.</li><li>Si necesitas reprogramar, propón una nueva fecha de inmediato.</li></ul></div>
+    <div class="card"><div class="ico bg-p">4</div><h3>Pasar de escuchar a accionar</h3><p>Una buena conversación no garantiza cambio si no baja a compromisos concretos.</p><ul><li>Cierra cada sesión con 1 a 3 compromisos.</li><li>Regístralos en tu bitácora con evidencia.</li><li>Empieza la siguiente sesión revisando qué hiciste, qué no y por qué.</li></ul></div>
+  </div>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+<!-- 09 HERRAMIENTAS -->
+<section id="herramientas"><div class="wrap">
+  <div class="eye">07 · Tus herramientas</div>
+  <h2>Seis herramientas explicadas paso a paso</h2>
+  <p class="lead">Haz clic en cada herramienta para desplegar para qué sirve, cómo aplicarla y un ejemplo. Lo que trabajes con ellas, regístralo en tu bitácora.</p>
+
+  <div class="tool" data-tool>
+    <div class="tool-head"><div class="ico bg-r">1</div><div class="txt"><h3>Ficha de presentación</h3><p>Preséntate con tu mentor y facilita una primera conversación con sentido.</p><div class="meta"><span>Sesión 1</span><span>Prepárala antes · 20 min</span></div></div><div class="chev">⌄</div></div>
+    <div class="tool-body">
+    <div class="tabs"><button class="on">Entiende</button><button>Aplica</button><button>Ejemplo</button></div>
+    <div class="pane on"><div class="two"><div><h4>Para qué sirve</h4><ul><li>Que tu mentor te conozca más allá de tu cargo.</li><li>Encontrar puntos en común desde el primer día.</li></ul></div><div><h4>Qué incluye</h4><ul><li>Nombre, rol y área.</li><li>Experiencia profesional y estudios.</li><li>Tu aprendizaje más relevante.</li><li>Competencias clave y técnicas.</li><li>Temas de interés y un dato personal.</li></ul></div></div></div>
+    <div class="pane"><h4>Paso a paso</h4><ol>
+      <li>Revisa el perfil de tu mentor (su rol y trayectoria) y busca puntos en común.</li>
+      <li>Escribe tu experiencia en 3 o 4 líneas: dónde has trabajado y qué haces hoy.</li>
+      <li>Elige un aprendizaje importante de tu carrera y por qué te marcó.</li>
+      <li>Anota tus competencias clave y tus temas de interés.</li>
+      <li>Comparte un dato personal que te guste contar.</li>
+      <li>Termina con una frase: “Me gustaría que esta mentoría me ayude a…”.</li>
+      <li>Envíasela a tu mentor antes de la sesión o úsala para presentarte.</li></ol></div>
+    <div class="pane"><div class="example"><b>Aprendizaje más relevante:</b> “Liderar mi primer proyecto con otra área me enseñó que alinear expectativas desde el inicio evita la mitad de los problemas”.<br><b>Dato personal:</b> “Corro medias maratones y aplico esa disciplina a mis metas”.<br><b>Me gustaría que esta mentoría me ayude a:</b> “ganar seguridad para presentar ante gerencia”.</div></div>
+    </div>
+  </div>
+
+  <div class="tool" data-tool>
+    <div class="tool-head"><div class="ico bg-o">2</div><div class="txt"><h3>Cómo me veo vs. cómo me ven</h3><p>Comparar tu autoevaluación con la mirada de tu líder usando tu EVD.</p><div class="meta"><span>Autoconocimiento</span><span>Antes de la sesión 2 · 20 min</span></div></div><div class="chev">⌄</div></div>
+    <div class="tool-body">
+    <div class="tabs"><button class="on">Entiende</button><button>Aplica</button><button>Ejemplo</button></div>
+    <div class="pane on"><div class="two"><div><h4>Para qué sirve</h4><ul><li>Poner en perspectiva tu nivel actual en cada competencia.</li><li>Descubrir fortalezas que no reconocías y posibles puntos ciegos.</li><li>Elegir con evidencia la competencia de tu PDI.</li></ul></div><div class="mirror">
+      <div style="background:#e9f7ef"><b>Coincidimos · nivel alto</b>Fortaleza reconocida. Úsala como palanca.</div><div style="background:#fff1d6"><b>Me veo más bajo</b>Fortaleza oculta. ¿Por qué no la reconoces?</div>
+      <div style="background:#ffe3e8"><b>Me veo más alto</b>Posible punto ciego. Pide ejemplos.</div><div style="background:#f3eef1"><b>Coincidimos · nivel bajo</b>Oportunidad clara para tu PDI.</div></div></div></div>
+    <div class="pane"><h4>Paso a paso</h4><ol>
+      <li>Ingresa a tu reporte de resultados EVD y ubica la sección comparativa.</li>
+      <li>Por cada competencia, anota tu autoevaluación y la evaluación de tu líder.</li>
+      <li>Ubica cada competencia en uno de los cuatro cuadrantes.</li>
+      <li>Marca la diferencia más grande (hacia arriba o hacia abajo).</li>
+      <li>Recuerda una situación concreta que explique esa diferencia.</li>
+      <li>Lleva el hallazgo a tu mentor: “Me veo en X, me ven en Y. ¿Qué crees que podría estar pasando?”.</li>
+      <li>Usa la conclusión para completar el punto 3 de la hoja PDI de tu bitácora.</li></ol></div>
+    <div class="pane"><div class="example"><b>Planifica y alinea:</b> me evalué en “Sobresale” y mi líder en “Requiere desarrollo”.<br><b>Situación:</b> “Tengo todo planificado en mi cabeza, pero no lo comparto con el equipo”.<br><b>Pregunta para mi mentor:</b> “¿Cómo haces visible tu planificación sin volverla burocrática?”.</div></div>
+    </div>
+  </div>
+
+  <div class="tool" data-tool>
+    <div class="tool-head"><div class="ico bg-p">3</div><div class="txt"><h3>GROW para preparar tu sesión</h3><p>Llegar con un tema claro y salir con un compromiso.</p><div class="meta"><span>Todos los territorios</span><span>Antes de cada sesión · 10 min</span></div></div><div class="chev">⌄</div></div>
+    <div class="tool-body">
+    <div class="tabs"><button class="on">Entiende</button><button>Aplica</button><button>Ejemplo</button></div>
+    <div class="pane on"><div class="grow">
+      <div style="background:var(--r)"><b>G</b>Goal · Meta: ¿qué quiero lograr y por qué ahora?</div>
+      <div style="background:var(--o)"><b>R</b>Reality · Realidad: ¿qué pasa hoy? ¿qué brecha existe?</div>
+      <div style="background:var(--m)"><b>O</b>Options · Opciones: ¿qué alternativas tengo?</div>
+      <div style="background:var(--p)"><b>W</b>Will · Compromiso: ¿qué haré, cuándo y cómo lo revisamos?</div></div>
+      <p style="color:var(--mut)">Tú preparas la G y la R antes de la sesión. La O y la W las construyes con tu mentor.</p></div>
+    <div class="pane"><h4>Paso a paso</h4><ol>
+      <li><b>G:</b> escribe en una frase lo que quieres lograr en esta sesión.</li>
+      <li><b>R:</b> describe la situación actual con hechos: qué pasó, qué hiciste y qué resultado tuviste.</li>
+      <li><b>R:</b> anota lo que ya intentaste.</li>
+      <li><b>O:</b> en la sesión, explora con tu mentor al menos tres alternativas.</li>
+      <li><b>O:</b> pregunta: “¿Qué harías tú en mi lugar?” solo después de proponer las tuyas.</li>
+      <li><b>W:</b> elige una opción y define qué harás, cuándo y cómo sabrás que funcionó.</li>
+      <li>Registra la W como tu compromiso en la bitácora.</li></ol></div>
+    <div class="pane"><div class="example"><b>G:</b> dar feedback a un par sin afectar la relación. <b>R:</b> sus entregas llegan tarde y afectan mi cierre; no le he dicho nada. <b>O:</b> hablarlo en privado, escalarlo, proponer un nuevo cronograma. <b>W:</b> conversación en privado el jueves, empezando por el impacto en el cliente.</div></div>
+    </div>
+  </div>
+
+  <div class="tool" data-tool>
+    <div class="tool-head"><div class="ico bg-m">4</div><div class="txt"><h3>Feedback 3x3 + feedforward</h3><p>Pedir y recibir feedback útil para tu desarrollo.</p><div class="meta"><span>Autoconocimiento</span><span>Acción + proyección</span><span>15 min</span></div></div><div class="chev">⌄</div></div>
+    <div class="tool-body">
+    <div class="tabs"><button class="on">Entiende</button><button>Aplica</button><button>Ejemplo</button></div>
+    <div class="pane on"><div class="two"><div><h4>Feedback 3x3</h4><ul><li>Tres fortalezas.</li><li>Tres oportunidades.</li><li>Una acción concreta.</li></ul></div><div><h4>Feedforward</h4><ul><li>Sugerencias hacia adelante, no solo revisión del pasado.</li><li>“La próxima vez podrías…”.</li></ul></div></div></div>
+    <div class="pane"><h4>Paso a paso</h4><ol>
+      <li>Elige a quién pedirle feedback: tu mentor, tu líder o un par que te haya visto en acción.</li>
+      <li>Pídelo sobre algo concreto: “¿Cómo me viste en la presentación del martes?”.</li>
+      <li>Pide tres fortalezas y tres oportunidades.</li>
+      <li>Escucha sin justificarte; solo pregunta para entender mejor.</li>
+      <li>Agradece y pide una sugerencia para la próxima vez (feedforward).</li>
+      <li>Elige una sola acción concreta y regístrala en tu bitácora.</li>
+      <li>Vuelve a pedir feedback después de aplicarla.</li></ol></div>
+    <div class="pane"><div class="example"><b>Fortalezas:</b> constancia, apertura, iniciativa. <b>Oportunidades:</b> priorizar tareas, pedir ayuda antes de bloquearse, cerrar acciones con más seguimiento.<br><b>Acción:</b> “Durante esta semana definiré una prioridad diaria y compartiré mi avance al final del día”.</div></div>
+    </div>
+  </div>
+
+  <div class="tool" data-tool>
+    <div class="tool-head"><div class="ico bg-y">5</div><div class="txt"><h3>Matriz de Eisenhower</h3><p>Priorizar para hacer espacio a tu desarrollo.</p><div class="meta"><span>Acción + proyección</span><span>15 min</span></div></div><div class="chev">⌄</div></div>
+    <div class="tool-body">
+    <div class="tabs"><button class="on">Entiende</button><button>Aplica</button><button>Ejemplo</button></div>
+    <div class="pane on"><div class="two"><div><h4>Para qué sirve</h4><ul><li>Cuando sientes que no te alcanza el tiempo para tus acciones del PDI.</li><li>Distinguir lo urgente de lo importante.</li></ul></div><div class="eis">
+      <div style="background:#ffd9e1"><b>Urgente e importante</b>Hazlo ahora</div><div style="background:#e9f7ef"><b>Importante, no urgente</b>Agéndalo (aquí vive tu desarrollo)</div>
+      <div style="background:#fff1d6"><b>Urgente, no importante</b>Delégalo</div><div style="background:#f3eef1"><b>Ni urgente ni importante</b>Elimínalo</div></div></div></div>
+    <div class="pane"><h4>Paso a paso</h4><ol>
+      <li>Lista todas tus tareas y pendientes de la semana.</li>
+      <li>Ubica cada una en uno de los cuatro cuadrantes.</li>
+      <li>Revisa cuánto tiempo dedicas al cuadrante “importante, no urgente”.</li>
+      <li>Incluye ahí tus acciones del PDI y de la mentoría.</li>
+      <li>Bloquea en tu calendario al menos un espacio para ellas.</li>
+      <li>Decide qué delegar y qué dejar de hacer.</li>
+      <li>Comparte con tu mentor qué cambió al final de la semana.</li></ol></div>
+    <div class="pane"><div class="example"><b>Hallazgo:</b> “El 80% de mi semana está en urgente e importante; mi acción del PDI nunca llega”.<br><b>Ajuste:</b> bloqueo los viernes de 9 a 10 a. m. para mi proyecto 70 y delego el reporte semanal a un compañero, con acompañamiento.</div></div>
+    </div>
+  </div>
+
+  <div class="tool" data-tool>
+    <div class="tool-head"><div class="ico bg-r">6</div><div class="txt"><h3>Career Path Mapping</h3><p>Visualizar tus hitos, decisiones y próximos pasos.</p><div class="meta"><span>PDI + propósito</span><span>Sesión 6</span><span>25 min</span></div></div><div class="chev">⌄</div></div>
+    <div class="tool-body">
+    <div class="tabs"><button class="on">Entiende</button><button>Aplica</button><button>Ejemplo</button></div>
+    <div class="pane on"><div class="two"><div><h4>Para qué sirve</h4><ul><li>Mirar tu trayectoria como una historia con aprendizajes.</li><li>Conectar lo que viviste en la mentoría con tu próximo reto.</li></ul></div><div><h4>Tres momentos</h4><ul><li><b>De dónde vengo:</b> hitos y decisiones clave.</li><li><b>Dónde estoy:</b> lo que cambió en esta mentoría.</li><li><b>A dónde voy:</b> próximos pasos en tu PDI.</li></ul></div></div></div>
+    <div class="pane"><h4>Paso a paso</h4><ol>
+      <li>Dibuja una línea de tiempo con 4 a 6 hitos de tu carrera.</li>
+      <li>En cada hito, anota qué decisión tomaste y qué aprendiste.</li>
+      <li>Marca el momento actual y lo que cambió gracias a la mentoría.</li>
+      <li>Define hacia dónde te gustaría crecer en los próximos años.</li>
+      <li>Identifica qué capacidades y experiencias necesitas para llegar.</li>
+      <li>Compártelo con tu mentor y pídele su mirada.</li>
+      <li>Actualiza tu PDI en Rankmi con los próximos pasos.</li></ol></div>
+    <div class="pane"><div class="example"><b>Hitos:</b> ingreso como analista → primer proyecto transversal → coordinación de un equipo pequeño.<br><b>Hoy:</b> “Aprendí a pedir ayuda y a comunicar con más foco”.<br><b>Hacia dónde voy:</b> un rol de liderazgo. <b>Próximo paso:</b> liderar la próxima iniciativa del área (70) y pedir feedback mensual a mi líder (20).</div></div>
+    </div>
+  </div>
+
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+
+<!-- 11 CASOS -->
+<section id="casos"><div class="wrap">
+  <div class="eye">08 · Situaciones difíciles</div>
+  <h2>Cuando algo no fluye como esperabas</h2>
+  <details><summary>No sé qué pedirle a mi mentor</summary><div class="in">Vuelve a tus <b>preguntas de reflexión del PDI</b> y a la sección comparativa de tu EVD. Elige un territorio y prepara tu sesión con GROW.</div></details>
+  <details><summary>Mi mentor cancela o reprograma seguido</summary><div class="in">Propón una nueva fecha de inmediato y sugiere dejar agendadas las siguientes sesiones. Si la situación continúa, escríbele al equipo de Desarrollo del Talento.</div></details>
+  <details><summary>Siento que me da recetas en lugar de ayudarme a pensar</summary><div class="in">Pídele otra forma de apoyo: “¿Me ayudarías a analizar las opciones antes de contarme qué harías tú?”. Llega con tus propias alternativas.</div></details>
+  <details><summary>No siento conexión con mi mentor</summary><div class="in">Dale tiempo: la confianza se construye. Compartan historias personales y expectativas. Si después de algunas sesiones sigue sin fluir, conversa con el equipo de Desarrollo del Talento.</div></details>
+  <details><summary>Quiero hablar de un cambio de área o promoción</summary><div class="in">Puedes hacerlo. Tu mentor te ayudará a analizar qué capacidades y experiencias necesitas, pero <b>no puede prometerte oportunidades</b>. Mantente atento a las convocatorias internas y conversa también con tu líder.</div></details>
+  <details><summary>No cumplí mis compromisos</summary><div class="in">Díselo con transparencia al inicio de la sesión. Revisen juntos qué pasó y rediseñen una acción más pequeña y realista. Actualiza el estatus en tu bitácora.</div></details>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+<!-- 12 RECURSOS -->
+<section class="white" id="recursos"><div class="wrap">
+  <div class="eye">09 · Para seguir aprendiendo</div>
+  <h2>Biblioteca del mentee</h2>
+  <p class="lead">Cuando un recurso responde a una necesidad de tu PDI, puedes sumarlo a tu 10%.</p>
+  <div class="filters" id="filters">
+    <button class="on" data-f="all">Todos</button><button data-f="t1">PDI + propósito</button><button data-f="t2">Autoconocimiento</button><button data-f="t4">Acción + proyección</button><button data-f="rol">Ser mentee</button>
+  </div>
+  <div class="grid g3" id="resgrid">
+    <div class="res" data-t="t1"><span class="type rimac">Proceso RIMAC</span><h3>Toolkit PDI 2026</h3><p>Paso a paso para completar tu PDI.</p><div class="ask">Revísalo antes de la sesión 2.</div><a class="btn" href="https://rimacsegurosperu.sharepoint.com/:b:/s/TalentoDesarrollo/IQAwfwj7Qk26S73uGe5ohzumAao0Bld1RpFbGGNTX8V-bn4?e=eZHF07" target="_blank">Abrir recurso</a></div>
+    <div class="res" data-t="t1"><span class="type book">Libro</span><h3>Empieza con el porqué · Simon Sinek</h3><p>Conectar tus metas con tu propósito.</p><div class="ask">¿Por qué te importa tu objetivo de PDI?</div><a class="btn" href="https://rimacsegurosperu-my.sharepoint.com/:b:/g/personal/zarela_maravi_rimac_com_pe/IQBizckzt_3MQqXaDKTeAfqoAQ7ESBEwZ0SMFaiJWtoBUS8?e=fRWjN7" target="_blank">Abrir libro</a></div>
+    <div class="res" data-t="t4"><span class="type book">Libro</span><h3>Hábitos atómicos · James Clear</h3><p>Pequeños cambios sostenidos para grandes resultados.</p><div class="ask">¿Qué hábito pequeño te acerca a tu meta?</div><a class="btn" href="https://rimacsegurosperu-my.sharepoint.com/:b:/g/personal/zarela_maravi_rimac_com_pe/IQB20sbu8G37Tr3y7xa-HDH7AeIgdIFgY2GC5R8kikX0U8Q?e=bUzUr0" target="_blank">Abrir libro</a></div>
+    <div class="res" data-t="t2"><span class="type book">Lectura</span><h3>Mentoring, mind-sets and errors</h3><p>Mentalidad de crecimiento y aprendizaje desde el error.</p><div class="ask">¿Qué error reciente te enseñó algo?</div><a class="btn" href="https://rimacsegurosperu-my.sharepoint.com/:b:/g/personal/zarela_maravi_rimac_com_pe/IQDzNDm2h_qXSqJK2DbLBeZcAWXd8LtSxQRRm_hLgyPaiks?e=XUJBML" target="_blank">Abrir lectura</a></div>
+    <div class="res" data-t="rol"><span class="type book">Lectura</span><h3>Mentoring up: twelve tips</h3><p>Cómo gestionar activamente tu relación de mentoring.</p><div class="ask">Léela antes de tu primera sesión.</div><a class="btn" href="https://rimacsegurosperu-my.sharepoint.com/:b:/g/personal/zarela_maravi_rimac_com_pe/IQDg8mnu73FASpNjh6j5kHTVASCXJUBBKQ1YsQSE2ilA6K8?e=LxEYVf" target="_blank">Abrir lectura</a></div>
+    <div class="res" data-t="rol"><span class="type video">TEDx · 13 min</span><h3>3 Key Elements to Thriving Mentorship · Janet Phan</h3><p>Cómo iniciar, activar y mantener tu relación con tu mentor.</p><div class="ask">¿Cuál de los tres elementos te cuesta más?</div><a class="btn" href="https://www.youtube.com/watch?v=rY7r6A_J_jQ" target="_blank">Ver charla</a></div>
+    <div class="res" data-t="t4"><span class="type video">Webinar</span><h3>Del insight a la acción</h3><p>Convertir aprendizajes en acciones, probar y ajustar.</p><div class="ask">¿Qué quick win puedes probar esta semana?</div><a class="btn" href="https://www.youtube.com/watch?v=p0FGQfV_8cE" target="_blank">Ver webinar</a></div>
+    <div class="res" data-t="t4"><span class="type course">Udemy RIMAC</span><h3>Aprendizaje continuo y adaptabilidad en el trabajo</h3><p>Aprender, desaprender y adaptarte.</p><div class="ask">Puede formar parte de tu 10%.</div><a class="btn" href="https://rimac.udemy.com/course/aprendizaje-continuo-y-adaptabilidad-en-el-trabajo/" target="_blank">Ir al curso</a></div>
+  </div>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+<!-- CIERRE -->
+<section class="closing" id="cierre"><div class="wrap">
+  <div class="eye">Cierre</div>
+  <h2>Tu mentoría termina, tu desarrollo continúa</h2>
+  <p class="lead">Al cerrar el programa, mira el camino recorrido y decide qué sigue.</p>
+  <div class="grid g3">
+    <div class="card"><h3>Reconoce</h3><p>¿De qué progreso te sientes más orgulloso?</p></div>
+    <div class="card"><h3>Sostén</h3><p>¿Qué cambio vas a mantener en tu día a día?</p></div>
+    <div class="card"><h3>Multiplica</h3><p>¿Qué impacto quieres generar? ¿Te animarías a ser mentor en una próxima edición?</p></div>
+  </div>
+  <div class="quote">Hoy aprendes de alguien que abrió camino. Mañana puedes ser tú quien acompañe a otros.</div>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+<footer>Guía del Mentee · Programa de Mentoring RIMAC · Tercera Edición · Desarrollo del Talento</footer>
+
+<script>
+document.querySelectorAll('[data-tool]').forEach(function(t){
+  t.querySelector('.tool-head').addEventListener('click',function(){t.classList.toggle('open');});
+  var b=t.querySelectorAll('.tabs button'),p=t.querySelectorAll('.pane');
+  b.forEach(function(x,i){x.onclick=function(){b.forEach(function(y){y.classList.remove('on')});p.forEach(function(y){y.classList.remove('on')});x.classList.add('on');p[i].classList.add('on');}});
+});
+(function(){var b=document.querySelectorAll('#sheets button'),p=document.querySelectorAll('.spane');
+  b.forEach(function(x,i){x.onclick=function(){b.forEach(function(y){y.classList.remove('on')});p.forEach(function(y){y.classList.remove('on')});x.classList.add('on');p[i].classList.add('on');}});})();
+document.querySelectorAll('#filters button').forEach(function(btn){
+  btn.onclick=function(){document.querySelectorAll('#filters button').forEach(function(x){x.classList.remove('on')});btn.classList.add('on');
+  var f=btn.dataset.f;document.querySelectorAll('#resgrid .res').forEach(function(r){r.style.display=(f==='all'||r.dataset.t.indexOf(f)>-1)?'flex':'none';});};
+});
+window.addEventListener('scroll',function(){
+  var h=document.documentElement;document.getElementById('bar').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+});
+</script>
+</body>
+</html>

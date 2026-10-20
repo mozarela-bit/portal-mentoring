@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guía del Mentor RIMAC | Tercera Edición</title>
+<style>
+:root{--r:#ff173d;--m:#ed0c78;--o:#ff5a00;--y:#ffb000;--p:#8e08e8;--ink:#1f1a24;--mut:#6b6270;--line:#ece2e6;--soft:#fff5f7;--bg:#faf8f9}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:"BR Sonoma","Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+h1,h2,h3{font-family:"RIMAC Display","BR Sonoma","Segoe UI",Arial,sans-serif}
+a{color:var(--r);font-weight:700}
+.progress{position:fixed;top:0;left:0;height:4px;background:var(--r);width:0;z-index:20}
+.hero{position:relative;overflow:hidden;background:#fff;padding:70px 8vw 70px;border-bottom:1px solid var(--line)}
+.hero>*{position:relative;z-index:1}
+.logo-img{height:70px;display:block}
+.logo-txt{display:inline-block;line-height:1}.logo-txt b{display:block;font-size:30px;letter-spacing:-.02em}.logo-txt span{display:block;margin:6px 0 0 34px;font-size:18px;font-style:italic;font-weight:900;letter-spacing:.06em}
+.tag{display:inline-block;margin-top:34px;padding:8px 14px;border-radius:999px;background:var(--soft);color:var(--r);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(44px,7vw,86px);line-height:.95;letter-spacing:-.045em;margin:20px 0;max-width:820px}
+.grad{color:var(--r)}
+.hero p{font-size:19px;color:#5b5160;max-width:680px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 5vw}
+section{padding:72px 0;border-bottom:1px solid var(--line)}
+section.white{background:#fff}
+.eye{font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--r)}
+h2{font-size:clamp(30px,4vw,50px);line-height:1.05;letter-spacing:-.035em;margin:10px 0 14px;max-width:900px}
+.lead{font-size:18px;color:var(--mut);max-width:840px;margin:0 0 32px}
+.grid{display:grid;gap:18px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g5{grid-template-columns:repeat(5,1fr)}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px}
+.card h3{margin:0 0 8px;font-size:19px}.card p,.card li{color:#5f5563;font-size:15px}.card ul{padding-left:18px;margin:8px 0 0}
+.ico{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:#fff;font-weight:900;margin-bottom:14px;font-size:18px}
+.bg-r{background:var(--r)}.bg-o{background:var(--o)}.bg-m{background:var(--m)}.bg-p{background:var(--p)}.bg-y{background:var(--y)}
+.quote{margin:30px 0 0;padding:26px 30px;border-radius:20px;background:#fff0f3;border-left:6px solid var(--r);font-size:22px;font-weight:800;line-height:1.3}
+.note{margin-top:22px;padding:18px 22px;border-radius:16px;background:var(--ink);color:#fff;font-size:15px}.note b{color:#ffb4c3}.note a{color:#ffb4c3}
+.back{display:inline-block;margin-top:28px;font-size:13px;text-decoration:none}
+.idx{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.idx a{text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;transition:.2s;display:block}
+.idx a:hover{transform:translateY(-3px);border-color:var(--r);box-shadow:0 12px 26px rgba(255,23,61,.12)}
+.idx .n{font-family:"RIMAC Display",Arial;font-weight:900;font-size:26px;color:var(--r)}
+.idx b{display:block;margin:4px 0}.idx span{font-size:13px;color:var(--mut);font-weight:400}
+.do ul,.dont ul{list-style:none;padding:0}.do li,.dont li{padding:9px 0;border-bottom:1px dashed var(--line)}
+.do li:before{content:"✓";color:var(--r);font-weight:900;margin-right:10px}
+.dont li:before{content:"✕";color:var(--p);font-weight:900;margin-right:10px}
+.ser{border-radius:20px;padding:26px;color:#fff;min-height:160px}.ser h3{font-size:26px;margin:0 0 6px}
+.s1{background:var(--o)}.s2{background:var(--r)}.s3{background:var(--m)}
+.eco{display:grid;grid-template-columns:1.05fr 1fr;gap:34px;align-items:center}
+.orb{position:relative;aspect-ratio:1;max-width:470px;margin:auto;width:100%}
+.orb div{position:absolute;border-radius:50%;display:flex;align-items:flex-start;justify-content:center;text-align:center;font-weight:800;font-size:14px;padding-top:18px}
+.o1{inset:0;background:#fff4e6;color:#b35a00}.o2{inset:13%;background:#ffe3ea;color:#c4002b}.o3{inset:27%;background:#ffc9d7;color:#a0003a}
+.o4{inset:40%;background:var(--r);color:#fff;align-items:center!important;padding:0!important;font-size:16px}
+.pdi-parts{display:grid;gap:14px}
+.part{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px}
+.part .n{flex:0 0 46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#fff;font-weight:900}
+.part h3{margin:0 0 4px;font-size:18px}.part p{margin:0;color:var(--mut);font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.chip{font-size:12px;padding:6px 10px;border-radius:999px;background:var(--soft);color:#a3002c;font-weight:700}
+.terr{border-radius:22px;padding:24px;color:#fff;display:flex;flex-direction:column;min-height:300px}
+.terr small{font-weight:900;opacity:.85;letter-spacing:.1em}.terr h3{font-size:22px;line-height:1.1;margin:10px 0 8px}
+.terr .q{font-weight:800;font-size:15px;margin-bottom:14px}.terr p{font-size:13px;margin:0 0 10px;opacity:.95}
+.terr .tl{margin-top:auto;font-size:12px;background:rgba(255,255,255,.18);border-radius:12px;padding:10px}
+.t1{background:var(--r)}.t2{background:var(--o)}.t3{background:var(--p)}.t4{background:var(--y)}.t5{background:var(--m)}
+.tool{background:#fff;border:1px solid var(--line);border-radius:24px;margin-bottom:16px;overflow:hidden;transition:box-shadow .2s}
+.tool.open{box-shadow:0 14px 34px rgba(45,15,31,.08)}
+.tool-head{display:flex;gap:18px;align-items:center;padding:22px 28px;background:#fff2f5;cursor:pointer;user-select:none}
+.tool-head:hover{background:#ffe8ee}
+.tool-head .ico{margin:0;width:56px;height:56px;font-size:22px;flex:0 0 56px}
+.tool-head .txt{flex:1}
+.tool-head h3{margin:0;font-size:24px}.tool-head p{margin:2px 0 0;color:var(--mut)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.meta span{font-size:12px;padding:5px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700}
+.chev{flex:0 0 40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid var(--line);color:var(--r);font-weight:900;font-size:18px;transition:transform .25s}
+.tool.open .chev{transform:rotate(180deg);background:var(--r);color:#fff;border-color:var(--r)}
+.tool-body{display:none;border-top:1px solid var(--line)}.tool.open .tool-body{display:block}
+.tabs{display:flex;gap:6px;padding:0 28px;border-bottom:1px solid var(--line);background:#fff}
+.tabs button{border:0;background:none;padding:14px 16px;font-weight:800;color:var(--mut);cursor:pointer;border-bottom:3px solid transparent;font-family:inherit;font-size:14px}
+.tabs button.on{color:var(--r);border-bottom-color:var(--r)}
+.pane{display:none;padding:26px 28px}.pane.on{display:block}
+.pane h4{margin:18px 0 8px;font-size:15px;color:var(--r);text-transform:uppercase;letter-spacing:.06em}.pane h4:first-child{margin-top:0}
+.pane ol,.pane ul{margin:0;padding-left:20px}.pane li{margin:7px 0;color:#4f4553;font-size:15px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.matrix{display:grid;grid-template-columns:1fr 1fr;gap:10px}.matrix .cell{border-radius:14px;padding:14px;min-height:100px;font-size:13px}.matrix .cell b{display:block;margin-bottom:4px}
+.circles{position:relative;width:100%;max-width:320px;aspect-ratio:1;margin:10px auto}
+.circles div{position:absolute;border-radius:50%;display:flex;justify-content:center;padding-top:14px;font-size:12px;font-weight:800}
+.c1{inset:0;background:#f3eef1;color:#6b6270}.c2{inset:17%;background:#ffd9e1;color:#b0002c}.c3{inset:36%;background:var(--r);color:#fff;align-items:center;padding:0!important}
+.ladder{display:flex;flex-direction:column-reverse;gap:6px}
+.rung{padding:10px 14px;border-radius:10px;color:#fff;font-size:13px;font-weight:700}
+.disc{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:6px 0 18px}
+.disc div{border-radius:14px;padding:14px;color:#fff;font-size:13px}.disc b{display:block;font-size:26px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.filters button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 15px;font-weight:800;cursor:pointer;font-family:inherit;font-size:13px;color:var(--mut)}
+.filters button.on{background:var(--r);color:#fff;border-color:var(--r)}
+.res{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column}
+.res .type{font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+.res h3{margin:8px 0;font-size:17px}.res p{font-size:14px;color:var(--mut);margin:0 0 8px}
+.res .ask{font-size:13px;background:var(--bg);border-radius:10px;padding:10px;margin:6px 0 14px;color:#4f4553}
+.res a.btn{margin-top:auto;text-decoration:none;text-align:center;padding:11px;border-radius:12px;background:var(--ink);color:#fff;font-size:13px}
+.type.book{color:var(--r)}.type.video{color:var(--p)}.type.course{color:var(--o)}.type.rimac{color:var(--m)}
+details{background:#fff;border:1px solid var(--line);border-radius:16px;margin:10px 0}
+summary{padding:18px 22px;font-weight:800;cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--r);font-size:22px;line-height:1}details[open] summary:after{content:"–"}
+details .in{padding:0 22px 20px;color:#4f4553;font-size:15px}.in b{color:var(--r)}
+.closing{background:var(--r);color:#fff;border:0}
+.closing .eye{color:#fff;opacity:.85}.closing .lead{color:#ffe6ec}
+.closing .card{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff}.closing .card p{color:#fff}
+.closing .quote{background:rgba(255,255,255,.14);border-left-color:#fff;color:#fff}.closing .back{color:#fff}
+footer{padding:30px;text-align:center;font-size:12px;color:var(--mut)}
+@media(max-width:1000px){.g5,.idx{grid-template-columns:repeat(2,1fr)}.eco,.two{grid-template-columns:1fr}}
+@media(max-width:680px){.g2,.g3,.g5,.idx,.disc,.matrix{grid-template-columns:1fr}.hero:before,.hero:after{display:none}.tabs{overflow-x:auto}.tool-head{padding:18px}}
+@media print{.progress,.filters,.tabs,.back,.chev{display:none}.tool-body,.pane{display:block!important}section{break-inside:avoid;padding:36px 0}.hero:before,.hero:after{display:none}}
+.hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,1fr);gap:56px;align-items:center}
+.hero-txt{min-width:0}
+.hero-art{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:150px 150px;gap:14px;max-width:470px;justify-self:end;width:100%}
+.ha{border-radius:26px;padding:22px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;font-family:"RIMAC Display","BR Sonoma","Segoe UI",Arial,sans-serif}
+.ha-main{grid-column:1/3;grid-row:1/3;background:var(--r)}
+.ha-main b{font-size:96px;line-height:.85;letter-spacing:-.05em}.ha-main span{font-size:22px;font-weight:800;margin-top:8px}
+.ha-a{background:var(--o);font-size:15px;font-weight:800;line-height:1.15}
+.ha-b{background:var(--ink);font-size:13px;font-weight:700;line-height:1.25}
+.hero-bar{position:absolute;left:0;right:0;bottom:0;height:8px;display:grid;grid-template-columns:3fr 1fr 1fr 1fr}
+.hero-bar i:nth-child(1){background:var(--r)}.hero-bar i:nth-child(2){background:var(--o)}.hero-bar i:nth-child(3){background:var(--m)}.hero-bar i:nth-child(4){background:var(--y)}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-art{justify-self:start;grid-template-rows:110px 110px;max-width:360px}.ha-main b{font-size:66px}}
+@media print{.hero-art,.hero-bar{display:none}}
+</style>
+</head>
+<body>
+<div class="progress" id="bar"></div>
+
+<header class="hero">
+<div class="hero-txt">
+  <img class="logo-img" src="data:image/png;base64,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" alt="Mentoring RIMAC">
+  <span class="tag">Programa de Mentoring · Tercera Edición</span>
+  <h1>Guía del <span class="grad">Mentor</span></h1>
+  <p>Tu experiencia puede abrir caminos. Esta guía te acompaña para convertir cada conversación con tu mentee en perspectiva, aprendizaje y acción, conectada con su PDI y con los procesos de Desarrollo del Talento de RIMAC.</p>
+</div>
+<div class="hero-art" aria-hidden="true"><div class="ha ha-main"><b>3ª</b><span>Edición</span></div><div class="ha ha-a">Guía del Mentor</div><div class="ha ha-b">Desarrollo del Talento</div></div><div class="hero-bar"><i></i><i></i><i></i><i></i></div>
+</header>
+
+<section id="indice"><div class="wrap">
+  <div class="eye">Índice</div>
+  <h2>¿Qué encontrarás en esta guía?</h2>
+  <p class="lead">Haz clic en cualquier sección para ir directo. Desde cada sección puedes volver aquí.</p>
+  <div class="idx">
+    <a href="#rol"><div class="n">01</div><b>Tu rol</b><span>Acompañar desde la experiencia</span></a>
+    <a href="#ser"><div class="n">02</div><b>SER</b><span>Nuestra cultura en la mentoría</span></a>
+    <a href="#pdi"><div class="n">03</div><b>Mentoring y PDI</b><span>Cómo se conecta con el desarrollo</span></a>
+    <a href="#territorios"><div class="n">04</div><b>Cinco territorios</b><span>La brújula de tus sesiones</span></a>
+    <a href="#habilidades"><div class="n">05</div><b>Habilidades</b><span>Escuchar, preguntar y desafiar</span></a>
+    <a href="#herramientas"><div class="n">06</div><b>Herramientas</b><span>Cinco herramientas paso a paso</span></a>
+    <a href="#recursos"><div class="n">07</div><b>Biblioteca</b><span>Libros, charlas y cursos</span></a>
+    <a href="#casos"><div class="n">08</div><b>Situaciones difíciles</b><span>Qué hacer si algo no fluye</span></a>
+  </div>
+</div></section>
+
+<section class="white" id="rol"><div class="wrap">
+  <div class="eye">01 · Tu rol</div>
+  <h2>Ser mentor es acompañar el desarrollo desde la experiencia</h2>
+  <p class="lead">No necesitas tener todas las respuestas. Tu aporte está en escuchar, preguntar, compartir lo que has vivido y ayudar a tu mentee a construir su propio criterio para decidir y actuar.</p>
+  <div class="grid g2">
+    <div class="card do"><h3>Como mentor, sí…</h3><ul>
+      <li>Escuchas y preguntas antes de aconsejar.</li>
+      <li>Compartes experiencias, aprendizajes y también errores.</li>
+      <li>Ayudas a mirar un reto desde otras perspectivas.</li>
+      <li>Conectas la conversación con el PDI del mentee.</li>
+      <li>Desafías con respeto y promueves su autonomía.</li>
+      <li>Das seguimiento a los acuerdos y celebras los avances.</li></ul></div>
+    <div class="card dont"><h3>Como mentor, no…</h3><ul>
+      <li>Evalúas el desempeño del mentee.</li>
+      <li>Prometes promociones, posiciones u oportunidades.</li>
+      <li>Resuelves el reto por él o ella.</li>
+      <li>Impones tu trayectoria como el único camino posible.</li>
+      <li>Conviertes la sesión en un monólogo sobre tu historia.</li>
+      <li>Etiquetas a la persona a partir de una herramienta o test.</li></ul></div>
+  </div>
+  <div class="note"><b>El mentee es owner de su desarrollo:</b> prepara la sesión, trae su agenda, ejecuta los acuerdos y toma sus propias decisiones. Tú habilitas la reflexión y el aprendizaje.</div>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+<section id="ser"><div class="wrap">
+  <div class="eye">02 · Nuestra cultura</div>
+  <h2>SER también se vive en una conversación de mentoring</h2>
+  <div class="grid g3">
+    <div class="ser s1"><h3>Servimos</h3><p>Ponemos nuestra experiencia, escucha y tiempo al servicio del crecimiento del mentee.</p></div>
+    <div class="ser s2"><h3>Empoderamos</h3><p>Ayudamos al mentee a formar su criterio, tomar decisiones y asumir el protagonismo de su desarrollo.</p></div>
+    <div class="ser s3"><h3>Resolvemos</h3><p>Convertimos la reflexión en alternativas, acciones concretas y aprendizajes aplicables.</p></div>
+  </div>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+<section class="white" id="pdi"><div class="wrap">
+  <div class="eye">03 · Mentoring y desarrollo del talento</div>
+  <h2>El mentoring no crea un plan nuevo: potencia el PDI que tu mentee ya construyó</h2>
+  <p class="lead">En RIMAC, el Plan de Desarrollo Individual y el modelo de competencias forman parte del mismo sistema. El mentoring es una palanca más para darle vida a ese plan.</p>
+  <div class="eco">
+    <div class="orb">
+      <div class="o1">Experiencias · Relaciones · Formación (70-20-10)</div>
+      <div class="o2">Competencias y capacidades</div>
+      <div class="o3">PDI del mentee</div>
+      <div class="o4">Desarrollo<br>del mentee</div>
+    </div>
+    <div class="pdi-parts">
+      <div class="part"><div class="n bg-m">1</div><div><h3>Acciones con la metodología 70-20-10</h3><p>Por cada capacidad o competencia elegida, el mentee registra acciones concretas de desarrollo:</p>
+        <div class="chips"><span class="chip">70% · Experiencia: proyectos, retos y resolución de problemas</span><span class="chip">20% · Interacción con otros: feedback, pares, observación</span><span class="chip">10% · Formación: Learning School, Learning Tracks, Learning Plus y Udemy</span></div></div></div>
+      <div class="part"><div class="n bg-p">★</div><div><h3>¿Dónde entras tú?</h3><p>El mentoring forma parte del <b>20%</b>, y además te permite ayudar al mentee a reflexionar sobre sus experiencias del 70% y a elegir formación del 10% que realmente sume.</p></div></div>
+    </div>
+  </div>
+  <div class="note"><b>Bitácora:</b> registra cada sesión en la bitácora oficial del programa (tema, objetivo, compromisos del mentor y del mentee, y estatus). No necesitas otro formato. Si tu mentee es parte de nuestra FFVV, puede completar su PDI en la segunda pestaña de la bitácora.</div>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+<section id="territorios"><div class="wrap">
+  <div class="eye">04 · La brújula de tus sesiones</div>
+  <h2>Cinco territorios para elegir la conversación que la dupla necesita</h2>
+  <p class="lead">No son etapas en orden. Al iniciar cada sesión, identifiquen en qué territorio están y qué necesitan conversar. Una sesión puede pasar por más de uno, siempre que cierre con un acuerdo claro.</p>
+  <div class="grid g5">
+    <div class="terr t1"><small>01</small><h3>PDI + propósito</h3><div class="q">¿Qué queremos transformar?</div><p>Úsalo al inicio o cuando las sesiones pierden foco.</p><div class="tl"><b>Herramientas:</b> Revisión de una acción 70-20-10</div></div>
+    <div class="terr t2"><small>02</small><h3>Autoconocimiento</h3><div class="q">¿Qué necesitamos reconocer?</div><p>Úsalo cuando aparece un patrón que se repite o un punto ciego.</p><div class="tl"><b>Herramientas:</b> DISC aplicado</div></div>
+    <div class="terr t3"><small>03</small><h3>Retos + perspectivas</h3><div class="q">¿Qué miramos desde otro lugar?</div><p>Úsalo cuando el mentee está bloqueado o ve una sola salida.</p><div class="tl"><b>Herramientas:</b> Círculo de control · Escalera de inferencias</div></div>
+    <div class="terr t4"><small>04</small><h3>Acción + proyección</h3><div class="q">¿Qué haremos diferente?</div><p>Úsalo cuando hay claridad, pero no acción.</p><div class="tl"><b>Herramientas:</b> Revisión de una acción 70-20-10</div></div>
+    <div class="terr t5"><small>05</small><h3>Liderazgo + influencia</h3><div class="q">¿Qué impacto queremos generar?</div><p>Úsalo cuando necesita movilizar a otras personas.</p><div class="tl"><b>Herramientas:</b> Mapa de stakeholders</div></div>
+  </div>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+<section class="white" id="habilidades"><div class="wrap">
+  <div class="eye">05 · Habilidades del mentor</div>
+  <h2>Escuchar, preguntar, compartir y desafiar</h2>
+  <div class="grid g3">
+    <div class="card"><div class="ico bg-r">👂</div><h3>Escucha activa</h3><p>Escucha lo que dice, cómo lo dice y lo que no dice. Parafrasea: “Lo que te escucho decir es…”. Resiste la tentación de responder de inmediato.</p></div>
+    <div class="card"><div class="ico bg-o">?</div><h3>Preguntas poderosas</h3><p>Prefiere preguntas abiertas: ¿qué?, ¿cómo?, ¿para qué? Evita los “¿por qué no hiciste…?”, que suenan a juicio.</p></div>
+    <div class="card"><div class="ico bg-m">↺</div><h3>Compartir sin imponer</h3><p>Pide permiso: “¿Te sirve si te cuento una experiencia?”. Comparte el contexto y lo que aprendiste, y devuelve: “¿Qué de esto aplica a tu caso?”.</p></div>
+    <div class="card"><div class="ico bg-p">⚡</div><h3>Desafío con contención</h3><p>Sin confianza no hay apertura; sin desafío no hay cambio. Nombra conductas e impacto, no etiquetas, y expresa confianza en su capacidad.</p></div>
+    <div class="card"><div class="ico bg-y">✎</div><h3>Feedback</h3><p>Habla de hechos concretos, conecta con el impacto y cierra con una sugerencia hacia adelante: “La próxima vez podrías probar…”.</p></div>
+    <div class="card"><div class="ico bg-r">✓</div><h3>Seguimiento</h3><p>Retoma los acuerdos al inicio de cada sesión. Si no se cumplieron, explora barreras antes de concluir falta de compromiso.</p></div>
+  </div>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+<section id="herramientas"><div class="wrap">
+  <div class="eye">06 · Toolkit del mentor</div>
+  <h2>Cinco herramientas explicadas paso a paso</h2>
+  <p class="lead">Haz clic en cada herramienta para desplegar para qué sirve, cuándo usarla y cómo aplicarla paso a paso. Elige la herramienta según el territorio que la dupla necesita trabajar; no todas las sesiones requieren una.</p>
+
+  <div class="tool" data-tool>
+    <div class="tool-head"><div class="ico bg-r">1</div><div class="txt"><h3>Revisión de una acción 70-20-10</h3><p>Aprender de una experiencia registrada en el PDI y ajustar el siguiente intento.</p><div class="meta"><span>PDI + propósito</span><span>Acción + proyección</span><span>15–20 min</span></div></div><div class="chev">⌄</div></div>
+    <div class="tool-body">
+      <div class="tabs"><button class="on">Entiende</button><button>Aplica</button></div>
+      <div class="pane on"><div class="two"><div><h4>Para qué sirve</h4><ul><li>Convertir una acción del PDI en aprendizaje real.</li><li>Evitar que el PDI quede como una lista de tareas que solo se marcan como completadas.</li></ul><h4>Cuándo usarla</h4><ul><li>Cuando el mentee ya ejecutó una acción de su PDI.</li><li>Cuando dice “lo hice, pero no sé si sirvió”.</li></ul></div><div><h4>Cuándo no usarla</h4><ul><li>Si el mentee aún no ha realizado ninguna acción: empieza por el territorio PDI + propósito.</li></ul><h4>Qué necesitas</h4><ul><li>El PDI del mentee abierto en Rankmi.</li></ul></div></div></div>
+      <div class="pane"><h4>Paso a paso</h4><ol>
+        <li>Pide al mentee que elija una acción de su PDI que haya ejecutado recientemente.</li>
+        <li>Pídele que describa qué ocurrió, solo hechos: qué hizo, con quién y qué resultado obtuvo.</li>
+        <li>Ayúdale a separar hechos de interpretaciones: “¿Eso pasó o es lo que sentiste?”.</li>
+        <li>Exploren qué funcionó y qué obstáculo apareció.</li>
+        <li>Pregunta qué feedback recibió o podría pedir (20%).</li>
+        <li>Identifiquen el aprendizaje principal en una frase.</li>
+        <li>Definan el ajuste para el siguiente intento y, si hace falta, un recurso del 10%.</li>
+        <li>Acuerden que el mentee actualice su avance en Rankmi.</li></ol>
+        <h4>Preguntas del mentor</h4><ul><li>¿Qué intentabas lograr?</li><li>¿Qué harías igual y qué cambiarías?</li><li>¿Qué aprendiste de ti en esta experiencia?</li></ul></div>
+    </div>
+  </div>
+
+  <div class="tool" data-tool>
+    <div class="tool-head"><div class="ico bg-o">2</div><div class="txt"><h3>DISC aplicado al mentoring</h3><p>Usar las preferencias de comportamiento para abrir conversaciones de autoconocimiento.</p><div class="meta"><span>Autoconocimiento</span><span>Liderazgo + influencia</span><span>25–30 min</span></div></div><div class="chev">⌄</div></div>
+    <div class="tool-body">
+      <div class="tabs"><button class="on">Entiende</button><button>Aplica</button></div>
+      <div class="pane on"><h4>¿Qué es DISC?</h4><p>Es un modelo que describe cuatro estilos de comportamiento preferidos. Todas las personas combinan los cuatro, con mayor o menor intensidad.</p>
+        <div class="disc"><div style="background:#e8293f"><b>D</b>Dominancia: foco en resultados, rapidez y decisión.</div><div style="background:#f2a600"><b>I</b>Influencia: foco en personas, entusiasmo y persuasión.</div><div style="background:#3f9e6b"><b>S</b>Estabilidad: foco en colaboración, calma y apoyo.</div><div style="background:#327bb0"><b>C</b>Cumplimiento: foco en calidad, precisión y análisis.</div></div>
+        <div class="two"><div><h4>Sí úsalo para</h4><ul><li>Explorar cómo se comunica y decide el mentee.</li><li>Identificar fortalezas y cuándo se vuelven excesos.</li><li>Preparar una interacción con alguien de estilo distinto.</li></ul></div><div><h4>No lo uses para</h4><ul><li>Etiquetar: “eres D”.</li><li>Justificar conductas: “soy así”.</li><li>Evaluar potencial o decidir promociones.</li><li>Reemplazar el feedback real.</li></ul></div></div></div>
+      <div class="pane"><h4>Paso a paso</h4><ol>
+        <li><b>Antes de la sesión:</b> el mentee completa un cuestionario DISC y revisa su resultado. Si no tiene acceso a uno, pueden hacer la versión rápida: que elija qué dos estilos lo describen mejor usando las definiciones de esta guía. Para conocer más sobre el modelo DISC, <a href="https://iclcoach.com/wp-content/uploads/2019/05/FL-Doc-Modelo-DISC.pdf" target="_blank" rel="noopener noreferrer">ingresa aquí</a>.</li>
+        <li>Pregunta: “¿Qué parte de tu resultado te representa y qué parte no?”.</li>
+        <li>Pide dos situaciones recientes en las que su estilo se notó, una positiva y una difícil.</li>
+        <li>Identifiquen la fortaleza que aporta ese estilo.</li>
+        <li>Exploren el exceso: “¿Cuándo esa fortaleza puede jugar en contra?”.</li>
+        <li>Piensen en una persona o situación que requiere un estilo distinto: “¿Qué necesita esa persona de ti?”.</li>
+        <li>Si existe relación real, conéctenlo con una competencia del PDI.</li>
+        <li>El mentee define una adaptación concreta para probar antes de la siguiente sesión.</li></ol>
+        <h4>Tip para el mentor</h4><p>Comparte también tu propio estilo. Hablar de las diferencias entre ambos hace la conversación más cercana y ayuda a que la relación funcione mejor.</p></div>
+    </div>
+  </div>
+
+  <div class="tool" data-tool>
+    <div class="tool-head"><div class="ico bg-p">3</div><div class="txt"><h3>Círculo de control e influencia</h3><p>Enfocar la energía en lo que el mentee sí puede mover.</p><div class="meta"><span>Retos + perspectivas</span><span>15–20 min</span></div></div><div class="chev">⌄</div></div>
+    <div class="tool-body">
+      <div class="tabs"><button class="on">Entiende</button><button>Aplica</button></div>
+      <div class="pane on"><div class="two"><div><h4>Para qué sirve</h4><ul><li>Salir de la frustración o del bloqueo.</li><li>Distinguir qué depende del mentee, qué puede influir y qué debe aceptar.</li></ul><h4>Cuándo usarla</h4><ul><li>Cuando escuchas frases como “no depende de mí”, “el área no me deja” o “no hay nada que hacer”.</li></ul></div><div><div class="circles"><div class="c1">No controlo</div><div class="c2">Puedo influir</div><div class="c3">Controlo</div></div></div></div></div>
+      <div class="pane"><h4>Paso a paso</h4><ol>
+        <li>Pide al mentee que describa el reto en una frase, sin adjetivos.</li>
+        <li>Listen juntos todos los factores involucrados (personas, plazos, recursos, decisiones, actitudes).</li>
+        <li>Ubiquen cada factor en uno de los tres círculos.</li>
+        <li>Pregunta: “¿En qué círculo estás poniendo hoy la mayor parte de tu energía?”.</li>
+        <li>Elijan una acción directa dentro del círculo de control.</li>
+        <li>Elijan una conversación o propuesta dentro del círculo de influencia.</li>
+        <li>Definan qué hará con lo que no controla: aceptarlo, monitorearlo o escalarlo.</li>
+        <li>Acuerden el primer movimiento y la fecha.</li></ol></div>
+    </div>
+  </div>
+
+  <div class="tool" data-tool>
+    <div class="tool-head"><div class="ico bg-m">4</div><div class="txt"><h3>Escalera de inferencias</h3><p>Separar los hechos de las conclusiones para mirar una situación con otros ojos.</p><div class="meta"><span>Retos + perspectivas</span><span>Autoconocimiento</span><span>15–20 min</span></div></div><div class="chev">⌄</div></div>
+    <div class="tool-body">
+      <div class="tabs"><button class="on">Entiende</button><button>Aplica</button></div>
+      <div class="pane on"><div class="two"><div><h4>Para qué sirve</h4><ul><li>Mostrar cómo, en segundos, pasamos de un hecho a una conclusión y a una acción.</li><li>Reducir conflictos basados en supuestos.</li></ul><h4>Cuándo usarla</h4><ul><li>Cuando el mentee atribuye intenciones: “lo hizo para dejarme mal”, “no le importa”.</li></ul></div><div class="ladder">
+        <div class="rung" style="background:#f7b5c3;color:#6b0020">1 · Hechos observables</div><div class="rung" style="background:#f58aa2">2 · Datos que selecciono</div><div class="rung" style="background:#f45c80">3 · Significado que les doy</div><div class="rung" style="background:#f2305f">4 · Supuestos</div><div class="rung" style="background:#e0114f">5 · Conclusiones</div><div class="rung" style="background:#b8004a">6 · Creencias</div><div class="rung" style="background:#8e08e8">7 · Acciones</div></div></div></div>
+      <div class="pane"><h4>Paso a paso</h4><ol>
+        <li>Elijan una situación que esté generando tensión.</li>
+        <li>Pide que describa lo que pasó como lo registraría una cámara: sin intenciones ni adjetivos.</li>
+        <li>Pregunta qué datos le llamaron la atención y cuáles dejó de lado.</li>
+        <li>Identifiquen qué significado les dio y qué supuso.</li>
+        <li>Revisen a qué conclusión llegó y cómo actuó.</li>
+        <li>Construyan al menos dos explicaciones alternativas.</li>
+        <li>Definan una pregunta o conversación para validar el supuesto.</li></ol></div>
+    </div>
+  </div>
+
+  <div class="tool" data-tool>
+    <div class="tool-head"><div class="ico bg-y">5</div><div class="txt"><h3>Mapa de stakeholders</h3><p>Identificar a quiénes necesita el mentee para lograr un objetivo y cómo acercarse a cada uno.</p><div class="meta"><span>Liderazgo + influencia</span><span>Retos + perspectivas</span><span>20–25 min</span></div></div><div class="chev">⌄</div></div>
+    <div class="tool-body">
+      <div class="tabs"><button class="on">Entiende</button><button>Aplica</button></div>
+      <div class="pane on"><div class="two"><div><h4>Para qué sirve</h4><ul><li>Leer el contexto político y relacional de un reto.</li><li>Priorizar a quién involucrar, informar o consultar.</li></ul><h4>Cuándo usarla</h4><ul><li>Proyectos transversales, iniciativas nuevas o cambios que afectan a varias áreas.</li></ul></div><div><div class="matrix">
+        <div class="cell" style="background:#fff4e0"><b>Alta influencia · bajo interés</b>Mantener satisfechos</div><div class="cell" style="background:#ffd9e1"><b>Alta influencia · alto interés</b>Gestionar de cerca</div>
+        <div class="cell" style="background:#f3eef1"><b>Baja influencia · bajo interés</b>Monitorear</div><div class="cell" style="background:#f1e3ff"><b>Baja influencia · alto interés</b>Mantener informados</div></div></div></div></div>
+      <div class="pane"><h4>Paso a paso</h4><ol>
+        <li>Definan el objetivo que el mentee necesita movilizar.</li>
+        <li>Listen a todas las personas o grupos involucrados o afectados.</li>
+        <li>Ubiquen a cada uno en la matriz según su influencia y su interés.</li>
+        <li>Para los de alta influencia, exploren: ¿qué necesita?, ¿qué le preocupa?, ¿qué gana?</li>
+        <li>Identifiquen aliados y posibles resistencias.</li>
+        <li>Definan mensaje y canal para cada actor clave.</li>
+        <li>Elijan la primera conversación y acuerden cuándo la tendrá.</li></ol>
+        <h4>Tip para el mentor</h4><p>Aquí tu experiencia vale oro: comparte cómo funcionan las dinámicas de decisión que conoces, sin hacer las gestiones por el mentee.</p></div>
+    </div>
+  </div>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+<section class="white" id="recursos"><div class="wrap">
+  <div class="eye">07 · Para seguir aprendiendo</div>
+  <h2>Biblioteca del mentor</h2>
+  <p class="lead">Libros, lecturas, charlas y cursos para ti o para recomendar a tu mentee. Cuando un recurso responde a una necesidad real, puede sumarse al 10% del PDI.</p>
+  <div class="filters" id="filters">
+    <button class="on" data-f="all">Todos</button><button data-f="t1">PDI + propósito</button><button data-f="t2">Autoconocimiento</button><button data-f="t4">Acción + proyección</button><button data-f="rol">Rol del mentor</button>
+  </div>
+  <div class="grid g3" id="resgrid">
+    <div class="res" data-t="rimac t1"><span class="type rimac">Proceso RIMAC</span><h3>Toolkit PDI 2026</h3><p>Guía oficial para entender las preguntas de reflexión y el registro de acciones 70-20-10.</p><div class="ask">Úsalo si tu mentee tiene dudas sobre la plataforma.</div><a class="btn" href="https://rimacsegurosperu.sharepoint.com/:b:/s/TalentoDesarrollo/IQAwfwj7Qk26S73uGe5ohzumAao0Bld1RpFbGGNTX8V-bn4?e=eZHF07" target="_blank">Abrir recurso</a></div>
+    <div class="res" data-t="book t1"><span class="type book">Libro</span><h3>Empieza con el porqué · Simon Sinek</h3><p>Conectar las metas con un propósito claro.</p><div class="ask">¿Por qué es importante para tu mentee este objetivo de su PDI?</div><a class="btn" href="https://rimacsegurosperu-my.sharepoint.com/:b:/g/personal/zarela_maravi_rimac_com_pe/IQBizckzt_3MQqXaDKTeAfqoAQ7ESBEwZ0SMFaiJWtoBUS8?e=fRWjN7" target="_blank">Abrir libro</a></div>
+    <div class="res" data-t="book t4"><span class="type book">Libro</span><h3>Hábitos atómicos · James Clear</h3><p>Pequeños cambios sostenidos para lograr grandes resultados.</p><div class="ask">¿Qué hábito pequeño acercaría a tu mentee a su objetivo?</div><a class="btn" href="https://rimacsegurosperu-my.sharepoint.com/:b:/g/personal/zarela_maravi_rimac_com_pe/IQB20sbu8G37Tr3y7xa-HDH7AeIgdIFgY2GC5R8kikX0U8Q?e=bUzUr0" target="_blank">Abrir libro</a></div>
+    <div class="res" data-t="book t2"><span class="type book">Lectura</span><h3>Mentoring, mind-sets and errors</h3><p>Mentalidad de crecimiento y aprendizaje a partir de los errores.</p><div class="ask">¿Qué error reciente le enseñó algo valioso a tu mentee?</div><a class="btn" href="https://rimacsegurosperu-my.sharepoint.com/:b:/g/personal/zarela_maravi_rimac_com_pe/IQDzNDm2h_qXSqJK2DbLBeZcAWXd8LtSxQRRm_hLgyPaiks?e=XUJBML" target="_blank">Abrir lectura</a></div>
+    <div class="res" data-t="book rol"><span class="type book">Lectura</span><h3>Mentoring up: twelve tips</h3><p>Cómo el mentee puede gestionar activamente la relación.</p><div class="ask">Compártela con tu mentee al inicio del programa.</div><a class="btn" href="https://rimacsegurosperu-my.sharepoint.com/:b:/g/personal/zarela_maravi_rimac_com_pe/IQDg8mnu73FASpNjh6j5kHTVASCXJUBBKQ1YsQSE2ilA6K8?e=LxEYVf" target="_blank">Abrir lectura</a></div>
+    <div class="res" data-t="video rol"><span class="type video">TEDx · 14 min</span><h3>How to be a Great Mentor · Kenneth Ortiz</h3><p>Tiempo, plan, aliento y corrección como claves del buen mentor.</p><div class="ask">¿Cuál de las cuatro claves te cuesta más?</div><a class="btn" href="https://www.youtube.com/watch?v=G3q8kEn_nsg" target="_blank">Ver charla</a></div>
+    <div class="res" data-t="video rol"><span class="type video">TEDx · 13 min</span><h3>3 Key Elements to Thriving Mentorship · Janet Phan</h3><p>Iniciar, activar y mantener una relación de mentoring.</p><div class="ask">Recomiéndala también a tu mentee.</div><a class="btn" href="https://www.youtube.com/watch?v=rY7r6A_J_jQ" target="_blank">Ver charla</a></div>
+    <div class="res" data-t="video rol"><span class="type video">TEDx · 10 min</span><h3>The Mutual Benefits of Mentorship · Vinnie Malcolm</h3><p>Por qué el mentor también aprende y crece.</p><div class="ask">¿Qué te gustaría llevarte tú de esta relación?</div><a class="btn" href="https://www.youtube.com/watch?v=2lCjjlLK2m8" target="_blank">Ver charla</a></div>
+    <div class="res" data-t="course t4"><span class="type course">Udemy RIMAC</span><h3>Aprendizaje continuo y adaptabilidad en el trabajo</h3><p>Aprender, desaprender y adaptarse en entornos cambiantes.</p><div class="ask">Puede formar parte del 10% del PDI.</div><a class="btn" href="https://rimac.udemy.com/course/aprendizaje-continuo-y-adaptabilidad-en-el-trabajo/" target="_blank">Ir al curso</a></div>
+  </div>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+<section id="casos"><div class="wrap">
+  <div class="eye">08 · Situaciones difíciles</div>
+  <h2>Cuando la conversación no fluye como esperabas</h2>
+  <details><summary>Mi mentee no sabe qué quiere trabajar</summary><div class="in">Vuelvan a sus <b>preguntas de reflexión del PDI</b>: qué lo motiva, qué quiere lograr y en qué le gustaría crecer. Pregunta por el último feedback recibido o por una situación en la que le hubiera gustado actuar distinto. No elijas el tema por él o ella.</div></details>
+  <details><summary>Las acciones de su PDI son muy generales</summary><div class="in">Ayúdale a aterrizarlas: ¿en qué proyecto concreto lo practicará?, ¿con quién?, ¿cuándo?, ¿cómo sabrá que avanzó? Luego invítalo a actualizarlas en Rankmi.</div></details>
+  <details><summary>Quiere que le diga exactamente qué hacer</summary><div class="in">Primero pídele dos o tres alternativas. Luego, si suma, comparte tu experiencia como <b>una posibilidad, no una receta</b>, y devuelve la decisión: “¿Qué de esto te sirve en tu contexto?”.</div></details>
+  <details><summary>No cumple los acuerdos</summary><div class="in">Explora antes de juzgar: ¿el acuerdo era claro?, ¿era realista?, ¿cambiaron sus prioridades? Rediseñen una acción más pequeña y concreta.</div></details>
+  <details><summary>Me pregunta por una promoción o movimiento</summary><div class="in">Ayúdale a analizar qué capacidades y experiencias necesita y qué conversaciones debe tener con su líder. <b>No prometas oportunidades</b>; recuérdale estar atento a las convocatorias internas.</div></details>
+  <details><summary>No tengo experiencia en el reto que trae</summary><div class="in">Sé transparente. Aun así puedes aportar con buenas preguntas, herramientas de esta guía o conectándolo con alguien que sí conozca el tema.</div></details>
+  <details><summary>La conversación se vuelve muy personal</summary><div class="in">Escucha con respeto, reconoce lo compartido y recuerda el alcance profesional del programa. Si el tema lo requiere, oriéntalo a los canales de apoyo de RIMAC o al equipo de Desarrollo del Talento.</div></details>
+  <details><summary>Tenemos dificultades para coordinar las sesiones</summary><div class="in">Acuerden desde el inicio una frecuencia realista y fijen la siguiente sesión antes de cerrar cada encuentro. Si la situación persiste, comunícate con el equipo de Desarrollo del Talento.</div></details>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+<section class="closing" id="cierre"><div class="wrap">
+  <div class="eye">Cierre</div>
+  <h2>El éxito de la mentoría es que tu mentee necesite cada vez menos de ti</h2>
+  <p class="lead">Al cerrar el programa, reconozcan el camino recorrido y proyecten lo que viene.</p>
+  <div class="grid g3">
+    <div class="card"><h3>Reconocer</h3><p>¿Qué cambió en tu forma de pensar, decidir o actuar?</p></div>
+    <div class="card"><h3>Transferir</h3><p>¿Qué aprendizaje podrás aplicar en otros retos?</p></div>
+    <div class="card"><h3>Proyectar</h3><p>¿Qué sigue en tu PDI y quién puede acompañarte?</p></div>
+  </div>
+  <div class="quote">Acompañar no es recorrer el camino por otra persona. Es ayudarla a verlo con más claridad y a recorrerlo con mayor confianza.</div>
+  <a class="back" href="#indice">↑ Volver al índice</a>
+</div></section>
+
+<footer>Guía del Mentor · Programa de Mentoring RIMAC · Tercera Edición · Desarrollo del Talento</footer>
+
+<script>
+document.querySelectorAll('[data-tool]').forEach(function(t){
+  t.querySelector('.tool-head').addEventListener('click',function(){t.classList.toggle('open');});
+  var b=t.querySelectorAll('.tabs button'),p=t.querySelectorAll('.pane');
+  b.forEach(function(x,i){x.onclick=function(){b.forEach(function(y){y.classList.remove('on')});p.forEach(function(y){y.classList.remove('on')});x.classList.add('on');p[i].classList.add('on');}});
+});
+document.querySelectorAll('#filters button').forEach(function(btn){
+  btn.onclick=function(){
+    document.querySelectorAll('#filters button').forEach(function(x){x.classList.remove('on')});btn.classList.add('on');
+    var f=btn.dataset.f;
+    document.querySelectorAll('#resgrid .res').forEach(function(r){r.style.display=(f==='all'||r.dataset.t.indexOf(f)>-1)?'flex':'none';});
+  };
+});
+window.addEventListener('scroll',function(){var h=document.documentElement;document.getElementById('bar').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+</script>
+</body>
+</html>
