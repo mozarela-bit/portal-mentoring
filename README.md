@@ -1,13 +1,3 @@
-Portal Mentoring RIMAC
-Proyecto de aprendizaje de Streamlit y GitHub.
+# Portal Mentoring RIMAC
 
-Objetivo
-Construir un portal para mentores y mentees.
-
-Funcionalidades
-Login por DNI
-Acceso a guías
-Bitácora
-Recursos
-Mi dupla
-#LunesDeMentoría
+Prototipo Streamlit. DNI mentor: 11111111. DNI mentee: 22222222.
